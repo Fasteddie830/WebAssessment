@@ -11,6 +11,7 @@ app.set('view engine', 'mustache');
 
 const router = require('./routes/guestbookRoutes');
 app.use('/', router); 
+app.use(express.urlencoded({extended: false }));
 
 app.listen(3000, () => {
     console.log('Server started on port 3000. Ctrl^c to quit.');
