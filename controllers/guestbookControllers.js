@@ -105,3 +105,24 @@ exports.post_new_user = function (req, res) {
 exports.show_login_page = function (req, res) {
     res.render("user/login");
 };
+
+exports.handle_login = function (req, res) {
+    res.render("newEntry", {
+        title: "Guest Book",
+        user: "user"
+    });
+};
+
+exports.logout = function (req, res) {
+    res
+        .clearCookie("jwt")
+        .status(200)
+        .redirect("/");
+}
+
+exports.show_new_entries = function (req, res) {
+    res.render('newEntry', {
+        'title': 'Guest Book',
+        'user': 'user'
+    })
+}

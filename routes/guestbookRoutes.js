@@ -1,8 +1,12 @@
+const {login} = require('../auth/auth')
+const {verify} = require('../auth/auth')
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/guestbookControllers.js');
 
+router.post('/login', login, controller.handle_login);
 router.get('/login', controller.show_login_page);
+router.get("/logout",verify, controller.logout);
 router.get("/", controller.landing_page);
 router.get('/guestbook', controller.entries_list);
 //router.get('/new', controller.new_entry);
@@ -11,6 +15,8 @@ router.post('/new', controller.post_new_entry);
 
 router.get('/posts/:author', controller.show_user_entries);
 router.get('/register', controller.show_register_page);
+router.post('/register', controller.post_new_user);
+router.get('/new', verify, controller.show_new_entries);
 
 router.get('/about', function(req, res) {
     res.redirect('/about.html');
@@ -29,7 +35,6 @@ router.use(function(err, req, res, next) {
     res.send('Internal Server Error.');
 })
 
-router.post('/register', controller.post_new_user);
 
 
 module.exports = router;
