@@ -87,6 +87,10 @@ exports.show_register_page = function (req, res) {
 exports.post_new_user = function (req, res) {
     const user = req.body.username;
     const password = req.body.pass;
+
+    console.log("something")
+    console.log(user, password)
+
     if (!user || !password) {
         res.send(401, 'no user or no password');
         return;
@@ -114,10 +118,7 @@ exports.handle_login = function (req, res) {
 };
 
 exports.logout = function (req, res) {
-    res
-        .clearCookie("jwt")
-        .status(200)
-        .redirect("/");
+    res.clearCookie("jwt").status(200).redirect("/");
 }
 
 exports.show_new_entries = function (req, res) {

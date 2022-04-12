@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
-
 const jwt = require('jsonwebtoken');
 
 exports.login = function(req, res, next){
@@ -21,11 +20,13 @@ exports.login = function(req, res, next){
                 /*if user exists we will write code to create the JSON Web Token here and 
                 then pass onto the next middleware */
                 let payload = { username: username};
+                let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 300});
                 res.cookie("jwt", accessToken);
-                //next();
+                next();
             }
             else{
-                return res.status(403).send();
+                return res.render("user/login")
+                //return res.status(403).send();
             }
         });
     });
