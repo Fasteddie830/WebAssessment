@@ -37,8 +37,8 @@ exports.landing_page = function(req, res) {
 exports.landing_page = function (req, res) {
     db.getAllEntries()
         .then((list) => {
-            res.render('entries', {
-                'title': 'Guest Book',
+            res.render('main', {
+                'title': 'Achilles Greek Restaurant',
                 'entries': list
             });
             console.log('promise resolved');
@@ -47,9 +47,25 @@ exports.landing_page = function (req, res) {
             console.log('promise rejected', err);
         })
 }
+
+exports.loggedIn_landing = function (req, res) {
+    db.getAllEntries()
+        .then((list) => {
+            res.render("main", {
+                title: "Achilles Greek Restaurant",
+                entries: list,
+                user: "user"
+            });
+            console.log("promise resolved");
+        })
+        .catch((err) => {
+            console.log("promise rejected", err);
+        });
+};
+
 exports.new_entries = function (req, res) {
     res.render('newEntry', {
-        'title': 'Guest Book'
+        'title': 'Achilles Greek Restaurant'
     })
 }
 exports.peters_entries = function (req, res) {
@@ -64,7 +80,7 @@ exports.post_new_entry = function (req, res) {
         return;
     }
     db.addEntry(req.body.author, req.body.subject, req.body.contents);
-    res.redirect('/');
+    res.redirect('/loggedIn');
 }
 
 exports.show_user_entries = function (req, res) {
@@ -72,8 +88,8 @@ exports.show_user_entries = function (req, res) {
     let user = req.params.author;
     db.getEntriesByUser(user).then(
         (entries) => {
-            res.render('entries', {
-                'title': 'Guest Book',
+            res.render('main', {
+                'title': 'Achilles Greek Restaurant',
                 'entries': entries
             });
         }).catch((err) => {
@@ -112,7 +128,7 @@ exports.show_login_page = function (req, res) {
 
 exports.handle_login = function (req, res) {
     res.render("newEntry", {
-        title: "Guest Book",
+        title: "Achilles Greek Restaurant",
         user: "user"
     });
 };
@@ -123,7 +139,22 @@ exports.logout = function (req, res) {
 
 exports.show_new_entries = function (req, res) {
     res.render('newEntry', {
-        'title': 'Guest Book',
+        'title': 'Achilles Greek Restaurant',
         'user': 'user'
     })
 }
+
+exports.verify = function (req, res, next) {
+    let accessToken = req.cookies.jwt;
+    if (!accessToken) {
+        return res.status(403).send();
+    }
+    let payload;
+    try {
+        payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+        next();
+    } catch (e) {
+        //if an error occurred return request unauthorized error
+        res.status(401).send();
+    }
+};

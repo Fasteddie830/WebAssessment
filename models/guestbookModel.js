@@ -10,21 +10,33 @@ class GuestBook {
     }
     init() {
         this.db.insert({
-            subject: 'I liked the exhibition',
-            contents: 'nice',
-            published: '2020-02-16',
-            author: 'Peter'
+            dish: 'Pizza Pepperoni',
+            description: 'Pepperoni is an American variety of spicy salami made from cured pork and beef seasoned with paprika or other chili pepper. Prior to cooking, pepperoni is characteristically soft, slightly smoky, and bright red. Thinly sliced pepperoni is one of the most popular pizza toppings in American pizzerias.',
+            price: '£5.00',
+            contains: 'gluten, wheat, meat'
+            /* published: '2020-02-16',
+            author: 'Peter' */
         });
         //for later debugging
-        console.log('db entry Peter inserted');
+        //console.log('db entry Peter inserted');
         this.db.insert({
-            subject: "Didn't like it",
-            contents: 'A really terrible style!',
-            published: '2020-02-18',
-            author: 'Ann'
+            dish: 'Pizza Margherita',
+            description: 'Pizza margherita, as the Italians call it, is a simple pizza hailing from Naples. When done right, margherita pizza features a bubbly crust, crushed San Marzano tomato sauce, fresh mozzarella and basil, a drizzle of olive oil, and a sprinkle of salt.',
+            price: '£5.50',
+            contains: 'gluten, wheat,'
+            /* published: '2020-02-18',
+            author: 'Ann' */
+        });
+        this.db.insert({
+            dish: 'Pizza something',
+            description: 'Pizza margherita, as the Italians call it, is a simple pizza hailing from Naples. When done right, margherita pizza features a bubbly crust, crushed San Marzano tomato sauce, fresh mozzarella and basil, a drizzle of olive oil, and a sprinkle of salt.',
+            price: '£5.50',
+            contains: 'gluten, wheat,'
+            /* published: '2020-02-18',
+            author: 'Ann' */
         });
         //for later debugging
-        console.log('db entry Ann inserted');
+        //console.log('db entry Ann inserted');
     }
     //a function to return all entries from the database
     getAllEntries() {
@@ -45,7 +57,7 @@ class GuestBook {
             })
         })
     }
-    getPetersEntries() {
+    /* getPetersEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
             //find(author:'Peter) retrieves the data,
@@ -62,13 +74,13 @@ class GuestBook {
                 }
             })
         })
-    }
+    } */
     addEntry(author, subject, contents) {
         var entry = {
-            author: author,
-            subject: subject,
-            contents: contents,
-            published: new Date().toISOString().split('T')[0],
+            //author: author,
+            //subject: subject,
+            //contents: contents,
+            //published: new Date().toISOString().split('T')[0],
         }
         console.log('entry created', entry);
         this.db.insert(entry, function (err, doc) {
