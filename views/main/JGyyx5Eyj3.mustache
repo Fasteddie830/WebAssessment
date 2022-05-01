@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>header}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    {{>nav}}
+    <div id="body-main">
+        <div id="aboutMain">
+            <div id="aboutWrapper">
+                <h1>Welcome to the staff portal!</h1>
+                <p>&nbsp;</p>
+                <p class="border-bottom"></p>
+                <p>&nbsp;</p>
+                {{^user}}
+                <h1>To register a new user, please click here</h1>
+                <a href="/register" class="btn btn-primary">
+                    Register
+                </a>
+                <p>&nbsp;</p>
+                <p class="border-bottom"></p>
+                <p>&nbsp;</p>
+                <h1>To login, please click here</h1>
+                <p>&nbsp;</p>
+
+                <a href="/login" class="btn btn-primary">
+                    Sign in
+                </a>
+                <p>&nbsp;</p>
+                <p class="border-bottom"></p>
+                <p>&nbsp;</p>
+
+                {{/user}}
+                {{#user}}
+                <a id="logout" href="/logout" class="btn btn-primary">
+                    Sign out
+                </a>
+                {{/user}}
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+</body>
+
+</html>

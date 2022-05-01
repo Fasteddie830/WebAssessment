@@ -37,7 +37,7 @@ exports.landing_page = function(req, res) {
 exports.landing_page = function (req, res) {
     db.getAllEntries()
         .then((list) => {
-            res.render('main', {
+            res.render('main/main', {
                 'title': 'Achilles Greek Restaurant',
                 'entries': list
             });
@@ -51,7 +51,7 @@ exports.landing_page = function (req, res) {
 exports.loggedIn_landing = function (req, res) {
     db.getAllEntries()
         .then((list) => {
-            res.render("main", {
+            res.render("main/about", {
                 title: "Achilles Greek Restaurant",
                 entries: list,
                 user: "user"
@@ -63,15 +63,33 @@ exports.loggedIn_landing = function (req, res) {
         });
 };
 
+exports.loggedIn_home = function (req, res) {
+    db.getAllEntries()
+        .then((list) => {
+            res.render("main/main", {
+                title: "Achilles Greek Restaurant",
+                entries: list,
+                user: "user"
+            });
+            console.log("promise resolved");
+        })
+        .catch((err) => {
+            console.log("promise rejected", err);
+        });
+};
+
+exports.loggedIn_about = function (req, res){
+    res.render("main/about", {
+        user: "user"
+    });
+}
+
 exports.new_entries = function (req, res) {
     res.render('newEntry', {
         'title': 'Achilles Greek Restaurant'
     })
 }
-exports.peters_entries = function (req, res) {
-    res.send('<h1>Processing Peter\'s Entries, see terminal</h1>');
-    db.getPetersEntries();
-}
+
 
 exports.post_new_entry = function (req, res) {
     console.log('processing post-new_entry controller');
@@ -98,6 +116,14 @@ exports.show_user_entries = function (req, res) {
 }
 exports.show_register_page = function (req, res) {
     res.render("user/register");
+}
+
+exports.show_about_page = function (req, res) {
+    res.render("main/about");
+}
+
+exports.show_JGyyx5Eyj3_page = function(req, res){
+    res.render("main/JGyyx5Eyj3")
 }
 
 exports.post_new_user = function (req, res) {
@@ -127,7 +153,7 @@ exports.show_login_page = function (req, res) {
 };
 
 exports.handle_login = function (req, res) {
-    res.render("newEntry", {
+    res.render("main/main", {
         title: "Achilles Greek Restaurant",
         user: "user"
     });

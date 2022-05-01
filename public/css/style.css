@@ -8,11 +8,27 @@ body {
 }
 
 /*------------------------------NAV------------------------------------*/
-/* Add a black background color to the top navigation */
+/*NAV has been made using the guidance of W3Schools*/
+#title {
+  background-color: ivory;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  border-left: 3px solid white;
+  border-right: 3px solid rgb(255, 255, 255);
+  border-bottom: 3px solid gray;
+  border-style: none inset inset inset;
+  background-image: url("../images/white-marble-3.jpg");
+  background-size: cover;
+}
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+
   .topnav a.icon {
     float: right;
     display: block;
@@ -21,12 +37,16 @@ body {
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: absolute;}
+  .topnav.responsive {
+    position: absolute;
+  }
+
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .topnav.responsive a {
     float: none;
     display: block;
@@ -41,12 +61,12 @@ body {
   position: absolute;
   width: 100%;
   min-height: 8%;
+  text-align: center;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
-  display: block;
+  display: inline-block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -71,50 +91,126 @@ body {
   display: none;
 }
 
-/*------------------------------MAIN_BODY---------------------------------*/
+/*---------------------------------NAV_END-------------------------------------*/
+/*------------------------------MENU_MAIN_BODY---------------------------------*/
 #content-body {
   text-align: center;
   border: 1px solid grey;
 }
 
-.dynamicElements{
+.dynamicElements {
   border-style: outset;
   border: 1px solid ivory;
-  background-color: rgb(223, 223, 223);
+  /* background-color: rgb(223, 223, 223); */
   padding: 3% 3% 3% 3%;
   margin-bottom: 3%;
+  background-image: url("../images/file.png");
+  color: ivory;
+}
 
+#dishTitleDiv {
+  background-image: url("../images/ribbon2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-bottom: 30px;
+}
+
+#dishTitle {
+  padding-top: 6%;
+  color: #212529;
 }
 
 @media only screen and (max-width: 636px) {
   #body-main {
-    padding: 15% 5% 5% 5%;
+    padding: 25% 5% 5% 5%;
     margin-top: 75px;
     position: relative;
     height: 90%;
   }
 
   .dynamicElements {
-    padding-top: 5%;
+    padding-top: 5.5%;
+    font-size: 1rem;
   }
 
 }
 
-@media only screen and (min-width: 637px) {
+@media only screen and (min-width: 637px) and (max-width: 1024px) {
   #body-main {
     padding: 2% 15% 2% 15%;
     position: relative;
     margin-top: 100px;
     height: 90%;
   }
+
 }
 
-#body-main{
+@media only screen and (min-width: 1024px) {
+
+  .dynamicElements {
+    border-style: outset;
+    border: 1px solid ivory;
+    /* background-color: rgb(223, 223, 223); */
+    padding: 3% 3% 3% 3%;
+    margin-bottom: 3%;
+    background-image: url("../images/file.png");
+    background-size: cover;
+    color: ivory;
+  }
+
+  #body-main {
+    padding: 15% 5% 5% 5%;
+    margin-top: 75px;
+    position: relative;
+    height: 90%;
+    font-size: 1.5rem;
+  }
+
+  #dishTitleDiv {
+    padding-bottom: 50px;
+    background-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  #dishTitle {
+    padding-top: 6%;
+    color: #212529;
+    font-size: 2rem;
+  }
+
+}
+
+#body-main {
   overflow: auto;
   background-image: url("../images/white-marble-3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+/*------------------------------MENU_MAIN_BODY_END-----------------------------*/
+/*------------------------------ABOUT_MAIN_BODY--------------------------------*/
 
+#aboutMain {
+  background-image: url("../images/file.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:ivory;
+  text-align: center;
+  border: 2px solid gray;
+  border-style: outset;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.border-bottom{
+  border-bottom: 1px solid ivory;
+  border-width: 50%;
+}
 
 /*------------------------------FOOTER----------------------------------*/
 #footer-content {

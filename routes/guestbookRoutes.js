@@ -8,15 +8,21 @@ router.get("/", controller.landing_page);
 
 router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);
+router.get('/about', controller.show_about_page);
+
+router.get('/JGyyx5Eyj3', controller.show_JGyyx5Eyj3_page);
 
 router.get('/login', controller.show_login_page);
 router.post('/login', login, controller.handle_login);
 
+//authenticated pages
 router.get("/loggedIn",verify, controller.loggedIn_landing);
+router.get("/JGyyx5Eyj3H", verify, controller.loggedIn_home);
+router.get("/JGyyx5Eyj3A", verify, controller.loggedIn_about);
 
 router.get("/logout",verify, controller.logout);
 
-router.get('/guestbook', controller.entries_list);
+//router.get('/guestbook', controller.entries_list);
 //router.get('/new', controller.new_entry);
 //router.get('/new', controller.new_entries);
 router.get('/new', verify, controller.show_new_entries);
@@ -24,9 +30,6 @@ router.post('/new', controller.post_new_entry);
 
 router.get('/posts/:author', controller.show_user_entries);
 
-router.get('/about', function(req, res) {
-    res.redirect('/about.html');
-})
 
 //router.get('/peter', controller.peters_entries);
 router.use(function(req, res) {

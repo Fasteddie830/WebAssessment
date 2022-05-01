@@ -19,6 +19,8 @@ app.use('/css', express.static(__dirname + '/public/css'));
 const mustache = require('mustache-express');
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
+ 
+/* app.set('views', __dirname + "views");  */
 /*  app.set('view engine', 'hjs'); */ 
 
 const router = require('./routes/guestbookRoutes');

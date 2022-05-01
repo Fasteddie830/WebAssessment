@@ -1,10 +1,12 @@
-<link rel="stylesheet" href="css/style.css">
 
 
 <div id="body-main">
     {{#entries}}
     <div class="dynamicElements">
-        <h4 style="text-align: center;">{{dish}}</h4>
+        <div id="dishTitleDiv">
+            <h4 style="text-align: center;" id="dishTitle">{{dish}}</h4>
+        </div>
+        <p>&nbsp;</p>
         <div class="card-body" id="content-body">
             <p>{{description}}</p>
             <p style="text-align: end;">{{price}}</p>

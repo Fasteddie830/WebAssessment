@@ -1,22 +1,37 @@
-
 <div class="topnav" id="myTopnav">
-  <h3>{{title}}</h3>
-  <a href="/">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="/about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+{{^user}}
+    <h3 id="title">Achilles Greek Restaurant</h3>
+    <a href="/">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="/about">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+ {{/user}}
+    {{#user}}
+    <h3 id="title">Achilles Greek Restaurant</h3>
+    <a href="/JGyyx5Eyj3H">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="/JGyyx5Eyj3A">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+    <a id="logout" href="/logout" class="btn btn-primary">
+        Sign out
+    </a>
+    {{/user}}
+    {{#user}}<p style="color: ivory">Welcome {{user}}</p>{{/user}}
 </div>
 
 <script>
-  function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 </script>

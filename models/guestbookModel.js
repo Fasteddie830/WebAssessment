@@ -13,7 +13,7 @@ class GuestBook {
             dish: 'Pizza Pepperoni',
             description: 'Pepperoni is an American variety of spicy salami made from cured pork and beef seasoned with paprika or other chili pepper. Prior to cooking, pepperoni is characteristically soft, slightly smoky, and bright red. Thinly sliced pepperoni is one of the most popular pizza toppings in American pizzerias.',
             price: '£5.00',
-            contains: 'gluten, wheat, meat'
+            contains: 'gluten, wheat, meat',
             /* published: '2020-02-16',
             author: 'Peter' */
         });
@@ -29,9 +29,9 @@ class GuestBook {
         });
         this.db.insert({
             dish: 'Pizza something',
-            description: 'Pizza margherita, as the Italians call it, is a simple pizza hailing from Naples. When done right, margherita pizza features a bubbly crust, crushed San Marzano tomato sauce, fresh mozzarella and basil, a drizzle of olive oil, and a sprinkle of salt.',
-            price: '£5.50',
-            contains: 'gluten, wheat,'
+            description: 'Pizza Something is one of the favourites of any web-developer, with the toppings being a wide variety of Lorem Ipsum. ',
+            price: '£15.50',
+            contains: 'gluten, wheat, A large amount of imagination'
             /* published: '2020-02-18',
             author: 'Ann' */
         });
