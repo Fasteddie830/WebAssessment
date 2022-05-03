@@ -1,25 +1,79 @@
-<html>
-
-<head>
-    {{>header}}
-</head>
-
-<body class="container">
-    <h1>{{title}}</h1>
-    <h2>New User Registration</h2>
-    <form method="post" role="/register">
-        <div class="form-group">
-            {{user-name-error}}
-            <label for="username">User Name</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter user name"required>
+<div id="body-main">
+    {{#entries}}
+    <div class="dynamicElements">
+        <div id="dishTitleDiv">
+            <h4 style="text-align: center;" id="dishTitle">{{dish}}</h4>
         </div>
-        <div class="form-group">
-            <label for="password">Password (8 characters minimum)</label>
-            <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter password" minlength="8" required>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Register" class="btn btn-primary">
+        <p>&nbsp;</p>
+        <div class="card-body" id="content-body">
+            <p>{{description}}</p>
+            <p style="text-align: end;">{{price}}</p>
         </div>
 
-    </form>
-</body>
+        <div class="card-footer">
+            <p>Contains: {{contains}}</p>
+            {{#user}}
+            <button onclick="Openform()">Update</button>
+
+            <form action="/delete" method="POST">
+                <input type="submit" name="delete" value="Delete">
+            </form>
+            <button>Delete</button>
+
+            <p>&nbsp;</p>
+            <p class="border-bottom"></p>
+            <div id="{{_id}}" style = "display:none">
+                <form action="/update" method="POST">
+                    <fieldset>
+                        <h3>Update Dish</h3>
+                        <br>
+                        <label>Dish ID: {{_id}}</label>
+                        <br>
+                        <input type="text" id="_id" name="_id" value={{_id}} disabled>
+                        <br><br>
+                        <label>Dish Name: {{dish}}</label>
+                        <br>
+                        <label>New Name</label>
+                        <br>
+                        <textarea style="width: 100%" rows = "1" cols = "60" name = "dish">{{dish}}</textarea>
+
+                        <label>New description</label>
+                        <br>
+                        <textarea style="width: 100%" rows = "3" cols = "60" name = "description">{{description}}</textarea>
+                        <br><br>
+
+                        <label>New price</label>
+                        <br>
+                        <input type="text" id="price" name="price" value={{price}}>
+                        <br><br>
+
+                        <label>New indegrients</label>
+                        <br>
+                        <textarea style="width: 100%" rows = "1" cols = "60" name = "contains">{{contains}}</textarea>
+                        <br><br>
+
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            {{/user}}
+        </div>
+
+    </div>
+    <script>
+function Openform(){
+  document.getElementById('{{_id}}').style.display = 'block';
+}
+</script>
+    {{/entries}}
+</div>
+<hr>
+
+
+
+
+
+{{^entries}}
+No entries yet.
+{{/entries}}

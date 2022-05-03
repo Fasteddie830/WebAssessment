@@ -1,52 +1,49 @@
-<html>
-
-<head>
-    {{>header}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-    <div class="topnav" id="myTopnav">
-        <h3>{{title}}</h3>
-        <a href="#home" class="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-    <div class="text-right" style="margin-bottom: 1em;">
-        <h1>{{title}}</h1>
-        {{^user}}
-        <a id="login" href="/register" class="btn btn-primary">
-            Register
-        </a>
-        <a id="login" href="/login" class="btn btn-primary">
-            Sign in
-        </a>
-        {{/user}}
-        {{#user}}
-        <a id="logout" href="/logout" class="btn btn-primary">
-            Sign out
-        </a>
-        {{/user}}
-    </div>
+<div id="body-main">
     {{#entries}}
-    <div>
-        <h4>{{subject}}</h4>
-        <p>
-            {{contents}}
-        </p>
-        <div class="card-footer">
-            <p>Written by <a href="/posts/{{author}}">{{author}}</a>, on {{published}}</p>
+    <div class="dynamicElements">
+        <div id="dishTitleDiv">
+            <h4 style="text-align: center;" id="dishTitle">{{dish}}</h4>
         </div>
-    </div>
-    <hr>
-    {{/entries}}
-    {{^entries}}
-    No entries yet.
-    {{/entries}}
-</body>
+        <p>&nbsp;</p>
+        <div class="card-body" id="content-body">
+            <p>{{description}}</p>
+            <p style="text-align: end;">{{price}}</p>
+        </div>
 
-</html>
+        <div class="card-footer">
+            <p>Contains: {{contains}}</p>
+            <p>Contains: {{_id}}</p>
+            {{#user}}
+            <button onclick="Openform()">Update</button>
+            <div id="updateForm" style = "display:none">
+                <form action="/update" method="POST">
+                    <fieldset>
+                        <h3>Update an employee</h3>
+                        <label>Employee ID</label>
+                        <input type="text" id='empID' name="id" required>
+                        <br><br>
+                        <label>New Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <br><br>
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            {{/user}}
+        </div>
+
+    </div>
+    {{/entries}}
+</div>
+<hr>
+
+<script>
+function Openform(){
+  document.getElementById('updateForm').style.display = 'block';
+}
+</script>
+
+{{^entries}}
+No entries yet.
+{{/entries}}

@@ -37,6 +37,19 @@ exports.landing_page = function(req, res) {
 exports.landing_page = function (req, res) {
     db.getAllEntries()
         .then((list) => {
+            res.render('main/about', {
+                'title': 'Achilles Greek Restaurant',
+            });
+            console.log('promise resolved');
+        })
+        .catch((err) => {
+            console.log('promise rejected', err);
+        })
+}
+
+exports.main = function (req, res) {
+    db.getAllEntries()
+        .then((list) => {
             res.render('main/main', {
                 'title': 'Achilles Greek Restaurant',
                 'entries': list
@@ -51,7 +64,7 @@ exports.landing_page = function (req, res) {
 exports.loggedIn_landing = function (req, res) {
     db.getAllEntries()
         .then((list) => {
-            res.render("main/about", {
+            res.render("main/main", {
                 title: "Achilles Greek Restaurant",
                 entries: list,
                 user: "user"
@@ -78,7 +91,7 @@ exports.loggedIn_home = function (req, res) {
         });
 };
 
-exports.loggedIn_about = function (req, res){
+exports.loggedIn_about = function (req, res) {
     res.render("main/about", {
         user: "user"
     });
@@ -122,7 +135,7 @@ exports.show_about_page = function (req, res) {
     res.render("main/about");
 }
 
-exports.show_JGyyx5Eyj3_page = function(req, res){
+exports.show_JGyyx5Eyj3_page = function (req, res) {
     res.render("main/JGyyx5Eyj3")
 }
 
@@ -153,7 +166,7 @@ exports.show_login_page = function (req, res) {
 };
 
 exports.handle_login = function (req, res) {
-    res.render("main/main", {
+    res.render("main/about", {
         title: "Achilles Greek Restaurant",
         user: "user"
     });
@@ -170,17 +183,29 @@ exports.show_new_entries = function (req, res) {
     })
 }
 
-exports.verify = function (req, res, next) {
-    let accessToken = req.cookies.jwt;
-    if (!accessToken) {
-        return res.status(403).send();
-    }
-    let payload;
-    try {
-        payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
-        next();
-    } catch (e) {
-        //if an error occurred return request unauthorized error
-        res.status(401).send();
-    }
-};
+exports.updated_page = function (req, res) {
+    db.getAllEntries()
+        .then((list) => {
+            res.render("main/main", {
+                title: "Achilles Greek Restaurant",
+                entries: list,
+                user: "user"
+            });
+            console.log("promise resolved");
+        })
+        .catch((err) => {
+            console.log("promise rejected", err);
+        });
+}
+
+exports.update_entry = function (req, res) {
+    db.updateData(req.body.dish, req.body.description, req.body.price, req.body.contains, req.body._id);
+    db.getAllEntries()
+    res.redirect('JGyyx5Eyj3H');
+}
+
+exports.delete_entry = function (req, res){
+    db.deleteEntry(req.body._id);
+    db.getAllEntries()
+    res.redirect('JGyyx5Eyj3H')
+}

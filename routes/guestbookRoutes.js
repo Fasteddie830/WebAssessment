@@ -5,6 +5,15 @@ const router = express.Router();
 const controller = require('../controllers/guestbookControllers.js');
 
 router.get("/", controller.landing_page);
+router.post("/", controller.update_entry);
+
+router.get('/main', controller.main);
+
+router.get('/update', controller.updated_page);
+router.post('/update', controller.update_entry);
+
+router.get('/delete', controller.updated_page);
+router.post('/delete', controller.delete_entry);
 
 router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);
@@ -38,12 +47,12 @@ router.use(function(req, res) {
     res.send('404 Not found.');
 })
 
-router.use(function(err, req, res, next) {
+/* router.use(function(err, req, res, next) {
     res.status(500);
     res.type('text/plain');
     res.send('Internal Server Error.');
 })
-
+ */
 
 
 module.exports = router;

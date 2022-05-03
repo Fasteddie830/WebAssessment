@@ -205,8 +205,15 @@ body {
   width: 80%;
   padding-left: 3%;
   padding-right: 3%;
+  padding-top: 3%;
+  margin-top: 10%;
 }
 
+@media only screen and (min-width: 1024px) {
+  #aboutMain {
+    margin-top: 2%;
+  }
+}
 .border-bottom{
   border-bottom: 1px solid ivory;
   border-width: 50%;

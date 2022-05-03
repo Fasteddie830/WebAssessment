@@ -1,4 +1,7 @@
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const nedb = require('nedb');
+
 class GuestBook {
     constructor(dbFilePath) {
         if (dbFilePath) {
@@ -6,9 +9,11 @@ class GuestBook {
             console.log('DB connected to ' + dbFilePath);
         } else {
             this.db = new nedb();
+            console.log('new DB created');
         }
     }
     init() {
+        console.log("initialising data");
         this.db.insert({
             dish: 'Pizza Pepperoni',
             description: 'Pepperoni is an American variety of spicy salami made from cured pork and beef seasoned with paprika or other chili pepper. Prior to cooking, pepperoni is characteristically soft, slightly smoky, and bright red. Thinly sliced pepperoni is one of the most popular pizza toppings in American pizzerias.',
@@ -52,11 +57,53 @@ class GuestBook {
                 } else {
                     resolve(entries);
                     //to see what the returned data looks like
-                    console.log('function all() returns: ', entries);
+                    //console.log('function all() returns: ', entries);
                 }
             })
         })
     }
+    updateData(dish, description, price, contains, _id, callback) {
+        var entry = {
+            dish: dish,
+            description: description,
+            price: price,
+            contains: contains
+        }
+        
+        //console.log(_id);
+
+        this.db.update(
+            {_id: _id},
+            {$set: 
+                {dish: dish,
+                description: description,
+                price: price,
+                contains: contains}
+            },
+            {},
+            function (err, numReplaced) {
+                console.log("replaced: " + numReplaced);
+            }
+        );
+
+
+        this.db.find({}).exec(function (err, docs) {console.log(docs);});
+        //console.log(this.db.find({dish: "Pizza"}))
+    }
+
+    /*     updateData(dish, description, price, contains, id) {
+            db.serialize(()=>{
+                this.db.run('UPDATE ' + this.db + 'SET dish = ?, description = ?, price = ?, contains = ? WHERE id = ?', [dish, description, price, contains, id],
+                function(err){
+                    if(err){
+                        res.send("error while updating");
+                        return console.error(err.message);
+                    }
+                    res.send("entry updated sucessfully");
+                    console.log("entry updated successfully");
+                });
+            });
+        } */
     /* getPetersEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
@@ -103,7 +150,18 @@ class GuestBook {
             })
         })
     }
-    
+    deleteEntry(_id){
+        console.log(_id);
+        this.db.remove({_id : _id}, {}, function(err, numRemoved){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log("removed: " + numRemoved);
+            }
+        })
+    }
+
 };
 
 //make the module visible outside
