@@ -97,22 +97,13 @@ exports.loggedIn_about = function (req, res) {
     });
 }
 
+/* 
 exports.new_entries = function (req, res) {
     res.render('newEntry', {
         'title': 'Achilles Greek Restaurant'
     })
 }
-
-
-exports.post_new_entry = function (req, res) {
-    console.log('processing post-new_entry controller');
-    if (!req.body.author) {
-        response.status(400).send("Entries must have an author.");
-        return;
-    }
-    db.addEntry(req.body.author, req.body.subject, req.body.contents);
-    res.redirect('/loggedIn');
-}
+ */
 
 exports.show_user_entries = function (req, res) {
     console.log('filtering author name', req.params.author);
@@ -204,8 +195,18 @@ exports.update_entry = function (req, res) {
     res.redirect('JGyyx5Eyj3H');
 }
 
-exports.delete_entry = function (req, res){
+exports.delete_entry = function (req, res) {
     db.deleteEntry(req.body._id);
     db.getAllEntries()
     res.redirect('JGyyx5Eyj3H')
+}
+
+exports.post_new_entry = function (req, res) {
+    /*     console.log('processing post-new_entry controller');
+        if (!req.body.author) {
+            response.status(400).send("Entries must have an author.");
+            return;
+        } */
+    db.addEntry(req.body.dish, req.body.description, req.body.price, req.body.contains);
+    res.redirect('JGyyx5Eyj3H');
 }

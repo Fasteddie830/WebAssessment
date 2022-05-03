@@ -34,8 +34,8 @@ router.get("/logout",verify, controller.logout);
 //router.get('/guestbook', controller.entries_list);
 //router.get('/new', controller.new_entry);
 //router.get('/new', controller.new_entries);
-router.get('/new', verify, controller.show_new_entries);
-router.post('/new', controller.post_new_entry);
+/* router.get('/new', verify, controller.show_new_entries); */
+router.post('/new', verify, controller.post_new_entry);
 
 router.get('/posts/:author', controller.show_user_entries);
 

@@ -219,6 +219,14 @@ body {
   border-width: 50%;
 }
 
+/*------------------------------BUTTONS----------------------------------*/
+#submitOpen {
+  display: initial;
+}
+#submitClose, #addNew{
+  display: none;
+}
+
 /*------------------------------FOOTER----------------------------------*/
 #footer-content {
   text-align: center;

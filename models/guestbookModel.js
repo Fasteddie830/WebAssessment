@@ -69,16 +69,19 @@ class GuestBook {
             price: price,
             contains: contains
         }
-        
+
         //console.log(_id);
 
         this.db.update(
-            {_id: _id},
-            {$set: 
-                {dish: dish,
-                description: description,
-                price: price,
-                contains: contains}
+            { _id: _id },
+            {
+                $set:
+                {
+                    dish: dish,
+                    description: description,
+                    price: price,
+                    contains: contains
+                }
             },
             {},
             function (err, numReplaced) {
@@ -87,7 +90,7 @@ class GuestBook {
         );
 
 
-        this.db.find({}).exec(function (err, docs) {console.log(docs);});
+        this.db.find({}).exec(function (err, docs) { console.log(docs); });
         //console.log(this.db.find({dish: "Pizza"}))
     }
 
@@ -122,12 +125,12 @@ class GuestBook {
             })
         })
     } */
-    addEntry(author, subject, contents) {
+    addEntry(dish, description, price, contains) {
         var entry = {
-            //author: author,
-            //subject: subject,
-            //contents: contents,
-            //published: new Date().toISOString().split('T')[0],
+            dish: dish,
+            description: description,
+            price: price,
+            contains: contains
         }
         console.log('entry created', entry);
         this.db.insert(entry, function (err, doc) {
@@ -138,6 +141,7 @@ class GuestBook {
             }
         })
     }
+
     getEntriesByUser(authorName) {
         return new Promise((resolve, reject) => {
             this.db.find({ 'author': authorName }, function (err, entries) {
@@ -150,13 +154,13 @@ class GuestBook {
             })
         })
     }
-    deleteEntry(_id){
+    deleteEntry(_id) {
         console.log(_id);
-        this.db.remove({_id : _id}, {}, function(err, numRemoved){
-            if(err){
+        this.db.remove({ _id: _id }, {}, function (err, numRemoved) {
+            if (err) {
                 console.log(err);
             }
-            else{
+            else {
                 console.log("removed: " + numRemoved);
             }
         })
