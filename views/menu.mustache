@@ -1,130 +1,177 @@
 <div id="body-main">
-    {{#entries}}
-    <div class="dynamicElements">
-        <div id="dishTitleDiv">
-            <h4 style="text-align: center;" id="dishTitle">{{dish}}</h4>
-        </div>
+    <div id="menu-wrapper">
         <p>&nbsp;</p>
-        <div class="card-body" id="content-body">
-            <p>{{description}}</p>
-            <p style="text-align: end;">{{price}}</p>
-        </div>
-
-        <div class="card-footer">
-            <p>Contains: {{contains}}</p>
-            {{#user}}
-            <div class="buttons">
-                <button id="{{_id}}" onclick="Openform(this.id)">Update</button>
-
-                <form action="/delete" method="POST">
-                    <input type="hidden" id="_id" name="_id" value={{_id}}>
-                    <input type="submit" name="delete" value="Delete">
-                </form>
+        <p class="border-bottom"></p>
+        <h1 id="menu-title">{{title}} Menu</h1>
+        <p class="border-bottom"></p>
+        <p>&nbsp;</p>
+        {{#entries}}
+        <div class="dynamicElements">
+            <div id="dishTitleDiv">
+                <h4 style="text-align: center;" id="dishTitle">{{dish}}</h4>
+            </div>
+            <p>&nbsp;</p>
+            <div class="card-body" id="content-body">
+                <p>{{description}}</p>
+                <p style="text-align: end;">{{price}}</p>
             </div>
 
-            <p>&nbsp;</p>
-            <p class="border-bottom"></p>
-            <div class="{{_id}}" style="display:none">
-                <form action="/update" method="POST">
-                    <fieldset>
-                        <h3>Update Dish</h3>
+            <div class="card-footer">
+                <p>Contains: {{contains}}</p>
+                {{#user}}
+                <p>{{availability}}</p>
+                <div class="buttons">
+                    <button id="{{_id}}" onclick="Openform(this.id)">Update</button>
+
+                    <form action="/delete" method="POST">
+                        <input type="hidden" id="_id" name="_id" value={{_id}}>
+                        <input type="submit" name="delete" value="Delete">
+                    </form>
+                </div>
+
+                <p>&nbsp;</p>
+                <p class="border-bottom"></p>
+                <div class="{{_id}}" style="display:none">
+                    <form action="/update{{Title}}" method="POST">
+                        <fieldset>
+                            <h3>Update Dish</h3>
+                            <br>
+                            <label>Dish ID: {{_id}}</label>
+                            <br>
+                            <input type="hidden" id="_id" name="_id" value={{_id}} required>
+                            <br><br>
+                            <label>Dish Name: {{dish}}</label>
+                            <br>
+                            <label>New Name</label>
+                            <br>
+                            <textarea style="width: 100%" rows="1" cols="60" name="dish" required>{{dish}}</textarea>
+
+                            <label>New description</label>
+                            <br>
+                            <textarea style="width: 100%" rows="3" cols="60" name="description"
+                                required>{{description}}</textarea>
+                            <br><br>
+
+                            <label>New price</label>
+                            <br>
+                            <input type="text" id="price" name="price" value={{price}} required>
+                            <br><br>
+
+                            <label>New indegrients</label>
+                            <br>
+                            <textarea style="width: 100%" rows="1" cols="60" name="contains"
+                                required>{{contains}}</textarea>
+                            <br><br>
+
+                            <!--input type="text" id="menu" name="menu" value={{title}} hidden>
+                            <br-->
+
+                            <label for="menu">Menus</label>
+                            <select id="menu" name="menu">
+                                <option value="Dinner">Dinner</option>
+                                <option value="Lunch">Lunch</option>
+                            </select>
+
+                            <label for="availability">Availability</label>
+                            <select id="availability" name="availability">
+                                <option value="Available">Available</option>
+                                <option value="Unavailable">Unavailable</option>
+                            </select>
+
+                            <button type="reset">Reset</button>
+                            <button type="submit">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+                {{/user}}
+            </div>
+        </div>
+
+
+        {{/entries}}
+    </div>
+    {{#user}}
+    <hr>
+
+    <div id="menu-wrapper">
+        <p>&nbsp;</p>
+        <p class="border-bottom"></p>
+        <h1 id="menu-title">{{title}} Menu</h1>
+        <p class="border-bottom"></p>
+        <p>&nbsp;</p>
+        <div id="aboutMain">
+            <div id="aboutWrapper">
+                <button type="submit" id="submitOpen" onclick="OpenformAddnew()">Update</button>
+                <button type="submit" id="submitClose" onclick="OpenformAddnew()">Update</button>
+                <div id="addNew">
+                    <h2>Write a new entry</h2>
+                    <form method="post" role="form" action="/new">
+                        <label>Dish Name: </label>
                         <br>
-                        <label>Dish ID: {{_id}}</label>
-                        <br>
-                        <input type="hidden" id="_id" name="_id" value={{_id}} required>
-                        <br><br>
-                        <label>Dish Name: {{dish}}</label>
-                        <br>
-                        <label>New Name</label>
-                        <br>
-                        <textarea style="width: 100%" rows="1" cols="60" name="dish" required>{{dish}}</textarea>
+
+                        <textarea style="width: 100%" rows="1" cols="60" name="dish" required></textarea>
 
                         <label>New description</label>
                         <br>
-                        <textarea style="width: 100%" rows="3" cols="60" name="description"
-                            required>{{description}}</textarea>
+                        <textarea style="width: 100%" rows="3" cols="60" name="description" required></textarea>
                         <br><br>
 
                         <label>New price</label>
                         <br>
-                        <input type="text" id="price" name="price" value={{price}} required>
+                        <input type="text" id="price" name="price" required>
                         <br><br>
 
                         <label>New indegrients</label>
                         <br>
-                        <textarea style="width: 100%" rows="1" cols="60" name="contains"
-                            required>{{contains}}</textarea>
+                        <textarea style="width: 100%" rows="1" cols="60" name="contains" required></textarea>
                         <br><br>
+                        <!--input type="text" id="menu" name="menu" value={{title}}>
+                        <br-->
 
+                        <label for="menu">Menus</label>
+                        <select id="menu" name="menu">
+                            <option value="Dinner">Dinner</option>
+                            <option value="Lunch">Lunch</option>
+                        </select>
+
+                        <label for="availability">Availability</label>
+                        <select id="availability" name="availability">
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
                         <button type="reset">Reset</button>
                         <button type="submit">Submit</button>
-                    </fieldset>
-                </form>
+                    </form>
+                </div>
+
+                <script>
+                    function Openform(passedID) {
+                        /*document.getElementsByClassName(passedID)[0].style.display = 'block';*/
+                        var x = document.getElementsByClassName(passedID)[0];
+                        if (getComputedStyle(x, null).display === 'none') {
+                            x.style.display = 'block';
+                        }
+                        else {
+                            x.style.display = 'none';
+                        }
+                    }
+                    function OpenformAddnew() {
+                        var x = document.getElementById("addNew");
+                        if (getComputedStyle(x, null).display === 'none') {
+                            x.style.display = 'block';
+                        }
+                        else {
+                            x.style.display = 'none';
+                        }
+                    }
+                </script>
+
+                {{/user}}
+                {{^entries}}
+                No entries yet.
+                {{/entries}}
+
             </div>
-            {{/user}}
-        </div>
-    </div>
-
-
-    {{/entries}}
-
-    <hr>
-    <div id="aboutMain">
-        <div id="aboutWrapper">
-            <button type="submit" id="submitOpen" onclick="OpenformAddnew()" >Update</button>
-            <button type="submit" id="submitClose" onclick="OpenformAddnew()" >Update</button>
-            <div id="addNew" >
-                <h2>Write a new entry</h2>
-                <form method="post" role="form" action="/new">
-                    <label>Dish Name: </label>
-                    <br>
-                    <textarea style="width: 100%" rows="1" cols="60" name="dish" required></textarea>
-
-                    <label>New description</label>
-                    <br>
-                    <textarea style="width: 100%" rows="3" cols="60" name="description" required></textarea>
-                    <br><br>
-
-                    <label>New price</label>
-                    <br>
-                    <input type="text" id="price" name="price" required>
-                    <br><br>
-
-                    <label>New indegrients</label>
-                    <br>
-                    <textarea style="width: 100%" rows="1" cols="60" name="contains" required></textarea>
-                    <br><br>
-
-                    <button type="reset">Reset</button>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-
-            <script>
-                function Openform(passedID) {
-                    /*document.getElementsByClassName(passedID)[0].style.display = 'block';*/
-                    var x = document.getElementsByClassName(passedID)[0];
-                    if(getComputedStyle(x, null).display === 'none'){
-                        x.style.display = 'block';
-                    }
-                    else{
-                        x.style.display = 'none';
-                    }
-                }
-                function OpenformAddnew() {
-                    var x = document.getElementById("addNew"); 
-                    if(getComputedStyle(x, null).display === 'none'){
-                        x.style.display = 'block';
-                    }
-                    else{
-                        x.style.display = 'none';
-                    }
-                }
-            </script>
-            {{^entries}}
-            No entries yet.
-            {{/entries}}
-
         </div>
     </div>
 </div>
