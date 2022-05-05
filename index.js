@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 require('dotenv').config() // loads data from .env file
 
+const PORT = process.env.PORT || 5000;
+
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
@@ -31,6 +33,8 @@ app.set('view engine', 'mustache');
 const router = require('./routes/restaurantRoutes');
 app.use('/', router);
 
-app.listen(5000, () => {
-    console.log('Server started on port 5000. Ctrl^c to quit.');
+
+
+app.listen(PORT, () => {
+    console.log('Server started on port ${PORT}');
 })
