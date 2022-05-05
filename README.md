@@ -14,7 +14,8 @@ This differs from the original design, where the menus were selectable from the 
 
 The menus unfortunately do not have images that can be uploaded with them, as after scouring both the NeDB github manuals and stackoverflow, there doesn't seem to be a way to do it. For image functionalities, MongoDB is recommended:
 Here is another project to showcase this:
-https://github.com/Fasteddie830/ITP3V2
+
+    https://github.com/Fasteddie830/ITP3V2
 
 The About Us in the navbar is moved to the last entry in the nav, for familiarity's sake. 
 
@@ -34,7 +35,11 @@ After logging in to the website, additional functions will be visible on the men
 
 The regular visitor can access the website through the normal link, and all the other pages can be accessed through the NAV part of the page (Top row).
 
-The admin page can be accessed through /JGyyx5Eyj3 link in the url. From there the registration and login pages can be accessed. After registration / login, the admin users can now edit the menus, by going to the Dinner or Lunch menu page. 
+The admin page can be accessed through pasting this link in the url.:
+
+    /JGyyx5Eyj3 
+
+ From there the registration and login pages can be accessed. After registration / login, the admin users can now edit the menus, by going to the Dinner or Lunch menu page. 
 
 There are options to update the current dishes, 
 remove the current dishes, 
@@ -48,23 +53,26 @@ Editing other functionalities like contact information or the about page from on
 
 -----------------------------How to use locally--------------------------------
 
-                               (Recommended)
 Download Visual Studio Code.
 
 To run the website locally, download the github repository containing this website to any folder. Open the main folder of this website in VS Code. From here, open a new terminal in VS Code from Terminal->New Terminal. From there, run the following commands:
 
-npm init
+    npm init
 
-npm install express
+    npm install express
 
-npm install nodejs
+    npm install nodejs
 
 This step is only required if the website doesn't start.
 
 To start the website, run the command:
 
-node index.js
+    node index.js
 
-The website will then open on http://localhost:5000/, type this URL into preferrably a chromium based browser. The rest of the process is the same as in the How to Use section.
+The website will then open on 
+
+    http://localhost:5000/
+
+Type this URL into preferrably a chromium based browser. The rest of the process is the same as in the How to Use section.
 
 -----------------------------------End------------------------------------------
