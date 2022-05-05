@@ -1,6 +1,6 @@
 const RestaurantDAO = require('../models/RestaurantModel');
 const db = new RestaurantDAO();
-const userDao = require('../models/userModel.js');
+const userDao = require('../models/UserModel.js');
 
 db.init();
 

@@ -1,8 +1,8 @@
-const {login} = require('../auth/auth')
-const {verify} = require('../auth/auth')
+const {login} = require('../auth/Auth')
+const {verify} = require('../auth/Auth')
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/restaurantControllers.js');
+const controller = require('../controllers/RestaurantControllers.js');
 
 /* Landing */
 

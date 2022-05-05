@@ -30,7 +30,7 @@ app.set('view engine', 'mustache');
 /* app.set('views', __dirname + "views");  */
 /*  app.set('view engine', 'hjs'); */ 
 
-const router = require('./routes/restaurantRoutes');
+const router = require('./routes/RestaurantRoutes');
 app.use('/', router);
 
 
