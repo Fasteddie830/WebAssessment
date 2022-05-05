@@ -17,6 +17,7 @@ app.use(express.static(public));
 
 //Style Templates
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap-icons'));
 app.use('/css', express.static(__dirname + '/public/css'));
 
 //View Engine

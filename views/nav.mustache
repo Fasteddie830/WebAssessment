@@ -1,19 +1,26 @@
+<!-- Nav template that will be imported to the main pages of the website -->
+
 <div class="topnav" id="myTopnav">
+
+    <!--Navbar for visitors who are not logged in -->
 {{^user}}
     <h3 id="title">Achilles Greek Restaurant</h3>
     <a href="lunch">Lunch</a>
     <a href="dinner">Dinner</a>
-    <a href="#contact">Contact</a>
+    <a href="contact">Contact</a>
     <a href="/about">About</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
+    <!--Navbar end -->
  {{/user}}
+
+ <!--Navbar for visitors who are logged in -->
     {{#user}}
     <h3 id="title">Achilles Greek Restaurant</h3>
     <a href="/JGyyx5Eyj3L">Lunch</a>
     <a href="/JGyyx5Eyj3D">Dinner</a>
-    <a href="#contact">Contact</a>
+    <a href="contact">Contact</a>
     <a href="JGyyx5Eyj3A">About</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -24,7 +31,9 @@
     {{/user}}
     {{#user}}<p style="color: ivory">Welcome {{user}}</p>{{/user}}
 </div>
+<!--Navbar end -->
 
+<!-- Small responsive design script -->
 <script>
     function myFunction() {
         var x = document.getElementById("myTopnav");

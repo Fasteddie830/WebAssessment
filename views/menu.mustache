@@ -1,3 +1,5 @@
+<!-- Main body of Menu page -->
+
 <div id="body-main">
     <div id="menu-wrapper">
         <p>&nbsp;</p>
@@ -5,6 +7,7 @@
         <h1 id="menu-title">{{title}} Menu</h1>
         <p class="border-bottom"></p>
         <p>&nbsp;</p>
+        <!-- Display entries of database for visitors -->
         {{#entries}}
         <div class="dynamicElements">
             <div id="dishTitleDiv">
@@ -16,19 +19,19 @@
                 <p style="text-align: end;">{{price}}</p>
             </div>
 
+            <!-- Separate display for admin users. -->
             <div class="card-footer">
                 <p>Contains: {{contains}}</p>
                 {{#user}}
                 <p>{{availability}}</p>
                 <div class="buttons">
                     <button id="{{_id}}" onclick="Openform(this.id)">Update</button>
-
-                    <form action="/delete" method="POST">
+                    <form action="/delete" method="POST"> <!-- delete entry -->
                         <input type="hidden" id="_id" name="_id" value={{_id}}>
                         <input type="submit" name="delete" value="Delete">
                     </form>
                 </div>
-
+                <!-- Update form for database entries -->
                 <p>&nbsp;</p>
                 <p class="border-bottom"></p>
                 <div class="{{_id}}" style="display:none">
@@ -92,7 +95,9 @@
     </div>
     {{#user}}
     <hr>
+    <!-- End of update form -->
 
+    <!-- Add new entry form, only visible to admin users -->
     <div id="menu-wrapper">
         <p>&nbsp;</p>
         <p class="border-bottom"></p>
@@ -101,8 +106,8 @@
         <p>&nbsp;</p>
         <div id="aboutMain">
             <div id="aboutWrapper">
-                <button type="submit" id="submitOpen" onclick="OpenformAddnew()">Update</button>
-                <button type="submit" id="submitClose" onclick="OpenformAddnew()">Update</button>
+                <button type="submit" id="submitOpen" onclick="OpenformAddnew()">New Entry</button>
+                <button type="submit" id="submitClose" onclick="OpenformAddnew()">New Entry</button>
                 <div id="addNew">
                     <h2>Write a new entry</h2>
                     <form method="post" role="form" action="/new">
@@ -143,6 +148,8 @@
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+
+                <!-- Script that displays / hides the new entry and update forms on click -->
 
                 <script>
                     function Openform(passedID) {

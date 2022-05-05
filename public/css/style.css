@@ -8,6 +8,11 @@ body {
   font-family:'Times New Roman', Times, serif ; /*Web-safe font*/
 }
 
+/* Chosen font family is web-safe, meaning all browsers / devices will be able to load it */
+/* Webiste is built to function well with all screen sizes */
+/* Colors are mainly black and white, on the grey scale. This accomodates mostly all colorblind users */
+/* Theme is mainly a marble look */
+
 /*------------------------------NAV------------------------------------*/
 /*NAV has been made using the guidance of W3Schools*/
 #title {
@@ -123,6 +128,8 @@ body {
   color: #212529;
 }
 
+/* Display for screen sizes below 637 pixels width */
+
 @media only screen and (max-width: 636px) {
   #body-main {
     padding: 25% 5% 5% 5%;
@@ -138,6 +145,8 @@ body {
 
 }
 
+/* Display for screen sizes between 637 and 1024 pixels width */
+
 @media only screen and (min-width: 637px) and (max-width: 1024px) {
   #body-main {
     padding: 2% 15% 2% 15%;
@@ -147,6 +156,8 @@ body {
   }
 
 }
+
+/* Display for screen sizes above 1024 pixels width */
 
 @media only screen and (min-width: 1024px) {
 
@@ -185,12 +196,16 @@ body {
 
 }
 
+/* main wrapper */
+
 #body-main {
   overflow: auto;
   background-image: url("../images/white-marble-3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+/* menu design */
 
 #menu-wrapper {
   background-color: #1e1e1e;
@@ -200,7 +215,6 @@ body {
   border: 5px solid gray;
   border-style: groove;
 }
-
 
 #menu-title {
   text-align: center;
@@ -220,6 +234,8 @@ body {
 /*------------------------------MENU_MAIN_BODY_END-----------------------------*/
 /*------------------------------ABOUT_MAIN_BODY--------------------------------*/
 
+
+/* this originally was supposed to be the design for the about page, but was implemented for the rest of the pages */
 #aboutMain {
   background-image: url("../images/file.png");
   background-size: cover;
@@ -237,6 +253,8 @@ body {
   margin-top: 10%;
 }
 
+
+/* small correction for bigger screen sizes */
 @media only screen and (min-width: 1024px) {
   #aboutMain {
     margin-top: 2%;
