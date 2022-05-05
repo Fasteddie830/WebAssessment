@@ -46,15 +46,15 @@ router.post('/new', verify, controller.post_new_entry);
 
 /* update entry routes */
 
-router.get('/JGyyx5Eyj3D', controller.updated_dinner_page);
-router.get('/JGyyx5Eyj3L', controller.updated_lunch_page);
-router.post('/update', controller.update_entry);
+router.get('/JGyyx5Eyj3D', verify, controller.updated_dinner_page);
+router.get('/JGyyx5Eyj3L', verify, controller.updated_lunch_page);
+router.post('/update', verify, controller.update_entry);
 
 /* delete entry routes */
 
-router.get('/delete', controller.updated_dinner_page);
-router.get('/delete', controller.updated_lunch_page);
-router.post('/delete', controller.delete_entry);
+router.get('/delete', verify, controller.updated_dinner_page);
+router.get('/delete', verify, controller.updated_lunch_page);
+router.post('/delete', verify, controller.delete_entry);
 
 /* error handling routes */
 /* 
