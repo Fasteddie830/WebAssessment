@@ -8,14 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FionaMacRaeFairlie/WAD2Lab7.git"
+    "url": "git+https://github.com/Fasteddie830/WebAssessment.git"
   },
-  "author": "Fiona Fairlie",
+  "author": "Daniel Nemeth",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FionaMacRaeFairlie/WAD2Lab7/issues"
-  },
-  "homepage": "https://github.com/FionaMacRaeFairlie/WAD2Lab7#readme",
+  "homepage": "https://github.com/Fasteddie830/WebAssessment#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.1.3",
